@@ -70,7 +70,7 @@ function App() {
           )}
 
           {quizState === 'leaderboard' && (
-            <Leaderboard />
+            <Leaderboard userName={userName} score={score} onRestart={restartQuiz} />
           )}
         </div>
       </div>
