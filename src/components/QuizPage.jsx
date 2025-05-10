@@ -7,7 +7,7 @@ const QuizPage = ({ onComplete, onReady }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState({});
-  
+    // const [timeUp, setTimeUp] = useState(false);
   
   const { questions, loading, error } = useFetchQuestions(); //fetch questions
   
