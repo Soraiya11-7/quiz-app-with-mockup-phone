@@ -7,12 +7,26 @@ import ResultPage from './components/ResultPage';
 function App() {
   const [userName, setUserName] = useState('');
   const [quizState, setQuizState] = useState('welcome'); // 'welcome', 'quiz', 'completed', 'leaderboard'
+    const [score, setScore] = useState(0);
+  const [totalQuestions, setTotalQuestions] = useState(0);
+  console.log(score);
+  console.log(totalQuestions);
 
  console.log(userName);
 
   const startQuiz = (name) => {
     setUserName(name);
     setQuizState('quiz');
+  };
+
+    const quizReady = () => {
+    setQuizState('quiz');
+  };
+
+  const completeQuiz = (finalScore, totalQues) => {
+    setScore(finalScore);
+    setTotalQuestions(totalQues);
+   
   };
 
   return (
@@ -27,8 +41,12 @@ function App() {
         
 
           {quizState === 'welcome' && <WelcomePage onStart={startQuiz} />}
-          {quizState === 'quiz' && (
-            <QuizPage />
+         {quizState === 'quiz' && (
+            <QuizPage
+              userName={userName}
+              onComplete={(finalScore) => completeQuiz(finalScore, 10)}
+              onReady={quizReady}
+            />
           )}
 
           {quizState === 'completed' && (
